@@ -68,8 +68,17 @@ app.get('/api/client-data/:slug', async (req, res) => {
     try {
         const { slug } = req.params;
         const [datosFiscales] = await pool.query('SELECT * FROM datos_fiscales WHERE id = 1');
+        if (datosFiscales.length === 0) return res.status(404).json({ message: 'Datos fiscales no encontrados' });
+
+        // --- ¡CONSULTA SQL MEJORADA AQUÍ! ---
+        // Ahora seleccionamos también la descripción de las tablas relacionadas.
         const [clientData] = await pool.query(`
-            SELECT c.name, uc.clave as uso_cfdi_clave, fp.clave as forma_pago_clave
+            SELECT
+                c.name,
+                uc.clave       as uso_cfdi_clave,
+                uc.descripcion as uso_cfdi_descripcion,
+                fp.clave       as forma_pago_clave,
+                fp.descripcion as forma_pago_descripcion
             FROM clients c
             LEFT JOIN usos_cfdi uc ON c.default_uso_cfdi_id = uc.id
             LEFT JOIN formas_pago fp ON c.default_forma_pago_id = fp.id
