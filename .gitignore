@@ -1,0 +1,9 @@
+# Dependencias
+node_modules
+
+# Archivos de entorno (contienen secretos)
+.env
+
+# Logs y archivos del sistema operativo
+npm-debug.log
+.DS_Store
