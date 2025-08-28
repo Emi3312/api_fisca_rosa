@@ -100,7 +100,7 @@ app.get('/api/download/constancia', (req, res) => {
 
     // res.download() se encarga de todo: establece las cabeceras correctas
     // para que el navegador inicie una descarga en lugar de mostrar el archivo.
-    res.download(filePath, 'Constancia_Situacion_Fiscal_POOA.pdf', (err) => {
+    res.download(filePath, 'CONSTANCIA_FISCAL_25082025.pdf', (err) => {
         if (err) {
             // Maneja el error si el archivo no se encuentra o no se puede leer.
             console.error("Error al descargar el archivo:", err);
