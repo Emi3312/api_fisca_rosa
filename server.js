@@ -96,7 +96,7 @@ app.get('/api/client-data/:slug', async (req, res) => {
 // <-- 2. ¡NUEVO ENDPOINT PARA DESCARGAR EL PDF! ---
 // Esta ruta es pública para que cualquiera con el enlace pueda descargar el archivo.
 app.get('/api/download/constancia', (req, res) => {
-    const filePath = path.join(__dirname, 'assets', 'Constancia_Situacion_Fiscal.pdf');
+    const filePath = path.join(__dirname, 'assets', 'CONSTANCIA_FISCAL_25082025.pdf');
 
     // res.download() se encarga de todo: establece las cabeceras correctas
     // para que el navegador inicie una descarga en lugar de mostrar el archivo.
